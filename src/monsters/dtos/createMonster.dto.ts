@@ -1,4 +1,5 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { IsAlpha } from 'class-validator';
 
 @InputType()
 export class CreateMonsterDTO {
@@ -6,6 +7,7 @@ export class CreateMonsterDTO {
     name: string;
 
     @Field()
+    @IsAlpha()
     type: string;
 
     @Field({ nullable: true })
