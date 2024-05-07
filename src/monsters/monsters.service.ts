@@ -18,9 +18,13 @@ export class MonstersService {
         return monsters;
     }
 
-    async addMonster(createMonsterDTO: CreateMonsterDTO): Promise<Monster> {
+    addMonster(createMonsterDTO: CreateMonsterDTO): Promise<Monster> {
         const newMonster = this.monsterRepository.create(createMonsterDTO);
 
         return this.monsterRepository.save(newMonster);
+    }
+
+    findOne(id: number): Promise<Monster> {
+        return this.monsterRepository.findOneByOrFail({ id });
     }
 }

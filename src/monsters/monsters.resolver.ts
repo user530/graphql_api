@@ -1,4 +1,4 @@
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { MonstersService } from './monsters.service';
 import { Monster } from './monster.entity';
 import { CreateMonsterDTO } from './dtos/createMonster.dto';
@@ -17,5 +17,10 @@ export class MonstersResolver {
     @Mutation(() => Monster)
     createMonster(@Args('createMonsterDTO') createMonsterDTO: CreateMonsterDTO): Promise<Monster> {
         return this.monstersService.addMonster(createMonsterDTO);
+    }
+
+    @Query(() => Monster)
+    monsterById(@Args('id', { type: () => Int }) id: number): Promise<Monster> {
+        return this.monstersService.findOne(id);
     }
 }
