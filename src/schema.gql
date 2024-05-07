@@ -12,3 +12,13 @@ type Monster {
 type Query {
   monsters: [Monster!]!
 }
+
+type Mutation {
+  createMonster(createMonsterDTO: CreateMonsterDTO!): Monster!
+}
+
+input CreateMonsterDTO {
+  name: String!
+  type: String!
+  description: String
+}

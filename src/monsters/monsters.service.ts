@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Monster } from './monster.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { CreateMonsterDTO } from './dtos/createMonster.dto';
 
 @Injectable()
 export class MonstersService {
@@ -15,5 +16,11 @@ export class MonstersService {
         const monsters = await this.monsterRepository.find();
 
         return monsters;
+    }
+
+    async addMonster(createMonsterDTO: CreateMonsterDTO): Promise<Monster> {
+        const newMonster = this.monsterRepository.create(createMonsterDTO);
+
+        return this.monsterRepository.save(newMonster);
     }
 }
