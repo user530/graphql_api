@@ -38,12 +38,12 @@ input CreateMonsterDTO {
 }
 
 input CreateTypeInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  name: String!
+  element: String!
 }
 
 input UpdateTypeInput {
-  """Example field (placeholder)"""
-  exampleField: Int
+  name: String!
+  element: String!
   id: Int!
 }
