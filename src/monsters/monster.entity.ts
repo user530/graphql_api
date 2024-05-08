@@ -1,5 +1,6 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Type } from 'src/types/entities/type.entity';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 @ObjectType()
@@ -9,14 +10,19 @@ export class Monster {
     id: number;
 
     @Column()
-    @Field()
+    @Field(() => String)
     name: string;
 
-    @Column()
-    @Field()
-    type: string;
 
     @Column({ nullable: true })
-    @Field({ nullable: true })
+    @Field(() => String, { nullable: true })
     description?: string;
+
+    @Column()
+    @Field(() => Int)
+    typeId: number;
+
+    @ManyToOne(() => Type, (type) => type.monsters)
+    @Field(() => Type)
+    type: Type;
 }

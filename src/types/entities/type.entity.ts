@@ -14,8 +14,8 @@ export class Type {
   name: string;;
 
   @Column()
-  @Field(() => [String], { description: 'Example field (placeholder)' })
-  elements: string[];
+  @Field(() => String)
+  element: string;
 
   @OneToMany(() => Monster, (monster) => monster.type)
   @Field(() => [Monster])

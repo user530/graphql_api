@@ -2,24 +2,48 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Type {
+  id: Int!
+  name: String!
+  element: String!
+  monsters: [Monster!]!
+}
+
 type Monster {
   id: Int!
   name: String!
-  type: String!
   description: String
+  typeId: Int!
+  type: Type!
 }
 
 type Query {
   monsters: [Monster!]!
   monsterById(id: Int!): Monster!
+  types: [Type!]!
+  type(id: Int!): Type!
 }
 
 type Mutation {
   createMonster(createMonsterDTO: CreateMonsterDTO!): Monster!
+  createType(createTypeInput: CreateTypeInput!): Type!
+  updateType(updateTypeInput: UpdateTypeInput!): Type!
+  removeType(id: Int!): Type!
 }
 
 input CreateMonsterDTO {
   name: String!
-  type: String!
+  typeId: Int!
   description: String
+}
+
+input CreateTypeInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateTypeInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
 }
