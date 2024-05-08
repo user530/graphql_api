@@ -6,6 +6,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { join } from 'path';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { TypesModule } from './types/types.module';
 
 @Module({
   imports: [
@@ -19,7 +20,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       entities: ['dist/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
-    MonstersModule
+    MonstersModule,
+    TypesModule
   ],
   controllers: [AppController],
   providers: [AppService],
