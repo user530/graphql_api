@@ -11,5 +11,6 @@ import { Type } from './entities/type.entity';
     ])
   ],
   providers: [TypesResolver, TypesService],
+  exports: [TypesService]
 })
 export class TypesModule { }
