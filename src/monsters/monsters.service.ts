@@ -3,6 +3,7 @@ import { Monster } from './monster.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateMonsterDTO } from './dtos/createMonster.dto';
+import { Type } from '../types/entities/type.entity';
 
 @Injectable()
 export class MonstersService {
@@ -10,6 +11,8 @@ export class MonstersService {
     constructor(
         @InjectRepository(Monster)
         private readonly monsterRepository: Repository<Monster>,
+        @InjectRepository(Type)
+        private readonly typeRepository: Repository<Type>
     ) { }
 
     async findAll(): Promise<Monster[]> {
